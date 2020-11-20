@@ -1,5 +1,14 @@
 version: "3"
-services:   
+services:
+    client: 
+        stdin_open: true
+        image: webiste_client
+        build: ./client
+        ports:
+            - "3000:3000"        
+        volumes: 
+            - ./client:/app
+            - /app/node_modules   
     api: 
         image: webiste_api
         build: ./api

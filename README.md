@@ -4,4 +4,4 @@
 2) cd hnproject
 3) docker-compose build
 4) docker-compose up
-5) localhost:3000
+5) ir a la ruta http://localhost:3000

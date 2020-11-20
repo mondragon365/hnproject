@@ -1,0 +1,23 @@
+table { 
+    border-collapse: collapse; 
+  }
+  
+  td { 
+    border-bottom: 1px solid #999; 
+    padding: 30px;
+  }
+  tr{
+    background-color: #fff;
+    border:1px #ccc;
+  }
+  .news_table tr:hover td{
+    background-color: #fafafa;
+  }
+  .title , .time{
+    color:#333;
+    font-size: 13px;
+    width: 100%;
+  }
+  .author{
+    color:#999;
+  }

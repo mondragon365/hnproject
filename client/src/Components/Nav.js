@@ -1,10 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
 import './styles/Navbar.css';
 
-
-export default function Nav({ logout }) {
+export default function Nav() {
     return (
         <div className="Navbar">
             <div className="container-fluid">

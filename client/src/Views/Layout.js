@@ -1,24 +1,17 @@
 import React, { useState } from 'react';
 import Nav from '../Components/Nav';
-import Sidebar from '../Components/Sidebar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Error from '../Components/Error';
-
-import Users from '../Views/Users';
-import NewUser from '../Views/NewUser';
-import Login from '../Views/Login';
-
-import { UsuarioProvider, useUsuario } from '../Context/usuario-context';
+import News from '../Views/News';
 
 export default () => (
-    <UsuarioProvider>
+    <>
         <Layout></Layout>
-    </UsuarioProvider>
+    </>
 )
 
 function Layout() {
-    const { usuario, login, logout } = useUsuario();
     const [error, setError] = useState(null);
 
     function mostrarError(mensaje) {
@@ -31,12 +24,12 @@ function Layout() {
     return (
         <>
             <Router>
-                <Nav logout={logout} />
+                <Nav />
                 <div className="container-fluid">
                     <div className="row">
                         <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
                             <Error mensaje={error} esconderError={esconderError} />
-                            <LoginRoutes mostrarError={mostrarError} logout={logout} />
+                            <LoginRoutes mostrarError={mostrarError} />
                         </main>
                     </div>
                 </div>
@@ -50,8 +43,8 @@ function LoginRoutes({ mostrarError }) {
         <Switch>
             <Route
                 default
-                path="/users"
-                render={props => (<Users {...props} mostrarError={mostrarError} />)}
+                path="/"
+                render={props => (<News {...props} mostrarError={mostrarError} />)}
             />
         </Switch>
     )

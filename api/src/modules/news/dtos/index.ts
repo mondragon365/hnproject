@@ -1,0 +1,1 @@
+export { ReadNewsDto } from './read-news.dto';

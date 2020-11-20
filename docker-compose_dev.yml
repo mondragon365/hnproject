@@ -1,0 +1,51 @@
+version: "3"
+services:
+    web: 
+        image: docker-node-express-mongoose
+        build: ./website
+        command: node index.js
+        ports:
+            - "3000:3000"
+        links: 
+            - mongo:27017
+        volumes: 
+            - ./website:/usr/src/app
+            - /usr/src/app/node_modules
+        depends_on: 
+            - "mongo"
+    mongo:
+        image: "mongo"
+        ports: 
+            - "27017:20017"
+    adminmongo:
+        image : "mrvautin/adminmongo"
+        ports:
+            - "1234:1234"
+
+version: "3"
+services:
+    client: 
+        stdin_open: true
+        image: webiste_client
+        build: ./client
+        ports:
+            - "3000:3000"        
+        volumes: 
+            - ./client:/app
+            - /app/node_modules
+    api: 
+        image: webiste_api
+        build: ./api
+        ports:
+            - "4000:4000"
+        links: 
+            - mongo:27017
+        volumes: 
+            - ./api:/app
+            - /app/node_modules
+        depends_on: 
+            - "mongo"
+    mongo:
+        image: "mongo"
+        ports: 
+            - "27017:27017" 

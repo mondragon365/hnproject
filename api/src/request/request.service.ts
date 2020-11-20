@@ -22,7 +22,7 @@ export class RequestService {
         return this.httpService.get('https://hn.algolia.com/api/v1/search_by_date?query=nodejs');
     }
 
-    @Cron('10 * * * * *')
+    @Cron('* 10 * * * *')
     async saveNews() {
         const newsRepository: NewsRepository = await getConnection().getRepository(News);
         this.getNews().subscribe((res) => {
